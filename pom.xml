@@ -237,73 +237,70 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>2.22.2</version>
                 </plugin>
+                <plugin>
+	                <groupId>org.commonjava.maven.plugins</groupId>
+	                <artifactId>directory-maven-plugin</artifactId>
+	                <inherited>true</inherited>
+	                <executions>
+	                    <execution>
+	                        <id>set-root-dir</id>
+	                        <phase>validate</phase>
+	                        <goals>
+	                            <goal>highest-basedir</goal>
+	                        </goals>
+	                        <configuration>
+	                            <property>rootDir</property>
+	                        </configuration>
+	                    </execution>
+	                </executions>
+	            </plugin>
+	
+	            <plugin>
+	                <groupId>org.apache.maven.plugins</groupId>
+	                <artifactId>maven-checkstyle-plugin</artifactId>
+	                <configuration>
+	                    <configLocation>${rootDir}/checkstyle/checkstyle.xml</configLocation>
+	                    <propertyExpansion>samedir=${rootDir}/checkstyle</propertyExpansion>
+	                    <sourceDirectories>
+	                        <sourceDirectory>${project.basedir}</sourceDirectory>
+	                    </sourceDirectories>
+	                    <includes>checkstyle/**/*, pom.xml, src/main/java/**/*.java</includes>
+	                </configuration>
+	                <executions>
+	                    <execution>
+	                        <id>checkstyle-check</id>
+	                        <phase>validate</phase>
+	                        <goals>
+	                            <goal>check</goal>
+	                        </goals>
+	                    </execution>
+	                </executions>
+	            </plugin>
+	
+	            <plugin>
+	                <groupId>org.apache.maven.plugins</groupId>
+	                <artifactId>maven-enforcer-plugin</artifactId>
+	                <executions>
+	                    <execution>
+	                        <goals>
+	                            <goal>enforce</goal>
+	                        </goals>
+	                        <configuration>
+	                            <rules>
+	                                <reactorModuleConvergence />
+	                                <requireMavenVersion>
+	                                    <version>[3.6.0,)</version>
+	                                </requireMavenVersion>
+	                                <requireJavaVersion>
+	                                    <version>[1.8,)</version>
+	                                </requireJavaVersion>
+	                            </rules>
+	                        </configuration>
+	                    </execution>
+	                </executions>
+	            </plugin>
             </plugins>
         </pluginManagement>
-
-        <plugins>
-            <plugin>
-                <groupId>org.commonjava.maven.plugins</groupId>
-                <artifactId>directory-maven-plugin</artifactId>
-                <inherited>true</inherited>
-                <executions>
-                    <execution>
-                        <id>set-root-dir</id>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>highest-basedir</goal>
-                        </goals>
-                        <configuration>
-                            <property>rootDir</property>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <configuration>
-                    <configLocation>${rootDir}/checkstyle/checkstyle.xml</configLocation>
-                    <propertyExpansion>samedir=${rootDir}/checkstyle</propertyExpansion>
-                    <sourceDirectories>
-                        <sourceDirectory>${project.basedir}</sourceDirectory>
-                    </sourceDirectories>
-                    <includes>checkstyle/**/*, pom.xml, src/main/java/**/*.java</includes>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>checkstyle-check</id>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-enforcer-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>enforce</goal>
-                        </goals>
-                        <configuration>
-                            <rules>
-                                <reactorModuleConvergence />
-                                <requireMavenVersion>
-                                    <version>[3.6.0,)</version>
-                                </requireMavenVersion>
-                                <requireJavaVersion>
-                                    <version>[1.8,)</version>
-                                </requireJavaVersion>
-                            </rules>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
     </build>
 
 </project>
