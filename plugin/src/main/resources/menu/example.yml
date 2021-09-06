@@ -25,6 +25,11 @@ menu-settings:
   auto-refresh: 5
 
   # OPTIONAL
+  # How frequently the menu can be opened by a certain player.
+  # Measured in seconds.
+  cooldown: 5
+
+  # OPTIONAL
   # These actions will be executed when the menu is opened.
   # Supports all the icon action types.
   open-actions:
