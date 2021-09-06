@@ -44,6 +44,7 @@ public class MenuParser {
 
         menu.setRefreshTicks(menuSettings.getRefreshTicks());
         menu.setOpenActions(menuSettings.getOpenActions());
+        menu.setCooldown(menuSettings.getCooldown());
 
         return new LoadedMenu(menu, menuConfig.getSourceFile(), menuSettings.getCommands(), menuSettings.getOpenItem());
     }
@@ -183,6 +184,14 @@ public class MenuParser {
                 refreshTicks = 1;
             }
             menuSettings.setRefreshTicks(refreshTicks);
+        }
+
+        if (settingsSection.contains(MenuSettingsPath.COOLDOWN)) {
+            int cooldown = (int) (settingsSection.getDouble(MenuSettingsPath.COOLDOWN));
+            if (cooldown < 1) {
+                cooldown = 1;
+            }
+            menuSettings.setCooldown(cooldown);
         }
 
         return menuSettings;

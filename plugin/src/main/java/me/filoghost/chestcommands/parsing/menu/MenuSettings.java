@@ -21,6 +21,7 @@ public class MenuSettings {
     private ImmutableList<String> commands;
     private ImmutableList<Action> openActions;
     private int refreshTicks;
+    private int cooldown;
 
     private MenuOpenItem openItem;
 
@@ -51,6 +52,14 @@ public class MenuSettings {
 
     public void setOpenActions(List<Action> openAction) {
         this.openActions = CollectionUtils.newImmutableList(openAction);
+    }
+
+    public int getCooldown() {
+    	return cooldown;
+    }
+
+    public void setCooldown(int cooldown) {
+        this.cooldown = cooldown;
     }
 
     public int getRefreshTicks() {

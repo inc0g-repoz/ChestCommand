@@ -5,6 +5,8 @@
  */
 package me.filoghost.chestcommands.listener;
 
+import me.filoghost.chestcommands.ChestCommands;
+import me.filoghost.chestcommands.config.Lang;
 import me.filoghost.chestcommands.menu.InternalMenu;
 import me.filoghost.chestcommands.menu.MenuManager;
 import org.bukkit.event.EventHandler;
@@ -28,6 +30,14 @@ public class CommandListener implements Listener {
         }
         
         event.setCancelled(true);
+
+        int cooldown = ChestCommands.getCooldown().timeLeft(event.getPlayer(), menu);
+        if (cooldown > 0) {
+        	String message = Lang.get().cooldown.replace("{cooldown}", String.valueOf(cooldown));
+            event.getPlayer().sendMessage(message);
+            return;
+        }
+
         menu.openCheckingPermission(event.getPlayer());
     }
     

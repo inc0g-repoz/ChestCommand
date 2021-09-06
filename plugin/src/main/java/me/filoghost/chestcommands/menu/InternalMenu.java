@@ -27,6 +27,7 @@ public class InternalMenu extends BaseMenu {
 
     private ImmutableList<Action> openActions;
     private int refreshTicks;
+    private int cooldown;
 
     public InternalMenu(@NotNull String title, int rows, @NotNull Path sourceFile) {
         super(title, rows);
@@ -52,6 +53,14 @@ public class InternalMenu extends BaseMenu {
 
     public void setRefreshTicks(int refreshTicks) {
         this.refreshTicks = refreshTicks;
+    }
+
+    public int getCooldown() {
+        return cooldown;
+    }
+
+    public void setCooldown(int cooldown) {
+        this.cooldown = cooldown;
     }
 
     @Override

@@ -19,6 +19,7 @@ public class Lang implements MappedConfig {
     public String no_exp = "&cYou need {levels} XP levels for this.";
     public String menu_not_found = "&cMenu not found! " + Errors.User.notifyStaffRequest;
     public String any = "any"; // Used in no_required_item when durability is not restrictive
+    public String cooldown = "&cWait {cooldown} secounds again to open this menu again.";
     
     private static Lang instance;
     

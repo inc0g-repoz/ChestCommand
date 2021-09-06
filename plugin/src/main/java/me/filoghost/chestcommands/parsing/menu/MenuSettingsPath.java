@@ -17,6 +17,7 @@ public class MenuSettingsPath {
     public static final ConfigPath COMMANDS = ConfigPath.literal("commands");
     public static final ConfigPath OPEN_ACTIONS = ConfigPath.literal("open-actions");
     public static final ConfigPath AUTO_REFRESH = ConfigPath.literal("auto-refresh");
+    public static final ConfigPath COOLDOWN = ConfigPath.literal("cooldown");
 
     public static final ConfigPath OPEN_ITEM_MATERIAL = ConfigPath.literal("open-with-item", "material");
     public static final ConfigPath OPEN_ITEM_LEFT_CLICK = ConfigPath.literal("open-with-item", "left-click");

@@ -1,4 +1,4 @@
-name: ChestCommands
+name: spvp
 main: me.filoghost.chestcommands.ChestCommands
 version: ${pluginVersion}
 api-version: 1.13

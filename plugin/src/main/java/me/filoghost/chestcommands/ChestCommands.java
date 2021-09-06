@@ -56,6 +56,8 @@ public class ChestCommands extends FCommonsPlugin {
     private static ErrorCollector lastLoadErrors;
     private static String newVersion;
 
+    private static Cooldown cooldown;
+
     @Override
     protected void onCheckedEnable() throws PluginEnableException {
         if (!ReflectUtils.isClassLoaded("org.bukkit.inventory.ItemFlag")) { // ItemFlag was added in 1.8
@@ -133,6 +135,8 @@ public class ChestCommands extends FCommonsPlugin {
         new MetricsLite(this, pluginID);
 
         Bukkit.getScheduler().runTaskTimer(this, new TickingTask(), 1L, 1L);
+
+        cooldown = new Cooldown();
     }
 
     @Override
@@ -201,6 +205,10 @@ public class ChestCommands extends FCommonsPlugin {
 
     public static ErrorCollector getLastLoadErrors() {
         return lastLoadErrors;
+    }
+
+    public static Cooldown getCooldown() {
+        return cooldown;
     }
 
 }
